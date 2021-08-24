@@ -2,7 +2,8 @@ import Image from "next/image";
 import Logo from "../public/images/logo.svg"
 import Link from "next/link";
 
-function Header() {
+function Header(props) {
+
     return (
         <div className="bg-primary">
             <div className="container mx-auto py-5 flex justify-between items-center">

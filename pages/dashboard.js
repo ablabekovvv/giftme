@@ -1,11 +1,12 @@
-
+import withAuth from "../HOC/withAuth";
 
 function Dashboard() {
+
     return (
         <div>
-            menya zhasu zovut
+            1234
         </div>
     );
 }
 
-export default Dashboard;
+export default withAuth(Dashboard);

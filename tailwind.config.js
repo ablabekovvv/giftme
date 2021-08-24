@@ -7,6 +7,7 @@ module.exports = {
       white: '#ffffff',
       primary: '#1DB3C3',
       purple: '#EAE8FF',
+      red: '#FA0707',
     },
     extend: {},
   },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Image from "next/image";
@@ -12,6 +12,7 @@ function LogIn(props) {
     const [password, setPassword] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
     const [email, setEmail] = useState("");
+    const [error, setError] = useState("")
     const router = useRouter()
     const submit = (e) => {
         e.preventDefault();
@@ -22,6 +23,9 @@ function LogIn(props) {
         API.createJWT(user)
             .then((res) => {
                 props.setIsAuth(res.data)
+            })
+            .catch((err) => {
+                setError(err.response.data.detail)
             })
     }
     return (
@@ -67,13 +71,17 @@ function LogIn(props) {
                                     height={24}
                                 />
                             </div>
+
                         </div>
+                            {error&&<p className="text-center ml-8 text-red transition duration-500">{error}</p>}
 
                         <div className="text-right mr-14 font-semibold cursor-pointer mb-16">
                             <p>
                                 Забыли пароль?
                             </p>
+
                         </div>
+
                         <button
                             type="submit"
                             className="w-3/6 mx-44 text-center py-3 rounded bg-primary text-white content-center rounded-3xl"
@@ -87,7 +95,6 @@ function LogIn(props) {
                             </a>
                         </div></Link>
                     </div>
-
 
                 </div>
             </div>

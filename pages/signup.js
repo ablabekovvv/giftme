@@ -59,7 +59,7 @@ function Signup() {
                             placeholder="Email"/>
                         </div>
 
-                        <div className="flex items-center justify-end mb-11 max-w-xl mx-12">
+                        <div className="flex items-center justify-end mb-2 max-w-xl mx-12">
                         <input
                             placeholder="Пароль"
                             className="block border-none w-full p-3 rounded-2xl relative"
@@ -78,8 +78,8 @@ function Signup() {
                         />
                             </div>
                         </div>
-                            {errorPassword&& errorPassword.map((item,index) => <p className="flex-col ">{errorPassword[index]}</p>)}
-                        <div className="flex items-center justify-end mb-10 max-w-xl mx-12">
+                            {errorPassword&& errorPassword.map((item,index) => <p className="flex-col mb-2 ml-12 text-red font-semibold">{errorPassword[index]}</p>)}
+                        <div className="flex items-center justify-end mb-10 max-w-xl mx-12 mt-6">
                         <input
                             name="pwd"
                             placeholder="Потвердить пароль"
@@ -100,7 +100,7 @@ function Signup() {
                         </div>
                         </div>
 
-                            {error&&<p className="text-center font-semibold text-primary mb-12">{error}</p>}
+                            {error&&<p className="text-center font-semibold text-red mb-12">{error}</p>}
                         <button
                             type="submit"
                             className="w-3/6 mx-44 rounded-3xl text-center py-3 rounded bg-primary text-white content-center"

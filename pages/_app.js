@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 
 
 function MyApp({ Component, pageProps }) {
-  const [isAuth, setIsAuth] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("user"))
     setIsAuth(data);
