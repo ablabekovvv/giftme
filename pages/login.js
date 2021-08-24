@@ -4,12 +4,26 @@ import Header from "../components/Header";
 import Image from "next/image";
 import showPwdImg from '../public/images/showpassword.svg';
 import hidePwdImg from '../public/images/showpassword.svg';
+import API from "./api";
+import { useRouter } from 'next/router'
 
 
-function LogIn() {
-    const [pwd, setPwd] = useState('');
-    const [confirmPwd, confirmSetPwd] = useState('')
+function LogIn(props) {
+    const [password, setPassword] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
+    const [email, setEmail] = useState("");
+    const router = useRouter()
+    const submit = (e) => {
+        e.preventDefault();
+        const user = {
+            email,
+            password,
+        }
+        API.createJWT(user)
+            .then((res) => {
+                props.setIsAuth(res.data)
+            })
+    }
     return (
         <div>
             <Header />
@@ -23,11 +37,14 @@ function LogIn() {
                                 Gmail
                             </a>
                         </div>
+                        <form onSubmit={submit}>
                         <div className="max-w-xl mx-12">
                             <input
-                                type="text"
+                                type="email"
                                 className="block border-none w-full p-3 rounded-2xl mb-11"
                                 name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email"/>
                         </div>
 
@@ -37,8 +54,8 @@ function LogIn() {
                                 placeholder="Пароль"
                                 className="block border-none w-full p-3 rounded-2xl relative"
                                 type={isRevealPwd ? "text" : "password"}
-                                value={pwd}
-                                onChange={e => setPwd(e.target.value)}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <div className="absolute transform -translate-x-4">
                                 <Image
@@ -51,6 +68,7 @@ function LogIn() {
                                 />
                             </div>
                         </div>
+
                         <div className="text-right mr-14 font-semibold cursor-pointer mb-16">
                             <p>
                                 Забыли пароль?
@@ -61,7 +79,7 @@ function LogIn() {
                             className="w-3/6 mx-44 text-center py-3 rounded bg-primary text-white content-center rounded-3xl"
                         >Войти
                         </button>
-
+                        </form>
                         <Link href="/signup"><div className="text-grey-dark mt-6 text-center">
                             У вас еще нет аккаунта? <br />
                             <a className="no-underline border-b border-blue text-primary cursor-pointer ">

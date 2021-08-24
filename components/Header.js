@@ -6,7 +6,7 @@ function Header() {
     return (
         <div className="bg-primary">
             <div className="container mx-auto py-5 flex justify-between items-center">
-            {/*Left*/}
+
                 <Link href="/">
             <div className="cursor-pointer">
                 <Image src={Logo} width={116} height={29} layout={"fixed"}/>
@@ -18,7 +18,7 @@ function Header() {
                 <ul className="flex items-center">
                     <li className="cursor-pointer mr-10 font-normal text-lg">О нас</li>
                     <Link href='/signup'><li className="cursor-pointer py-1.5 px-6 rounded-3xl border border-white font-medium text-lg mr-6">Регистрация</li></Link>
-                    <li className="cursor-pointer text-lg mr-10">Войти</li>
+                    <Link href='/login'><li className="cursor-pointer text-lg mr-10">Войти</li></Link>
                 </ul>
             </nav>
             </div>

@@ -2,14 +2,39 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Image from "next/image";
-import showPwdImg from '../public/images/showpassword.svg';
-import hidePwdImg from '../public/images/showpassword.svg';
+import showPwdImg from "../public/images/showpassword.svg";
+import hidePwdImg from "../public/images/showpassword.svg";
+import API from "../pages/api/index"
+import { useRouter } from 'next/router'
 
 
 function Signup() {
-    const [pwd, setPwd] = useState('');
-    const [confirmPwd, confirmSetPwd] = useState('')
+    const [password, setPassword] = useState('');
+    const [confirmPassword, confirmSetPassword] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("")
+    const [errorPassword, serErrorPassword] = useState("")
+    const router = useRouter()
+
+    const submit = (e) => {
+        e.preventDefault();
+        const user = {
+            email,
+            password,
+        }
+        API.createUser(user)
+            .then((res) => {
+                console.log(res)
+                if(res.status === 201){
+                    router.push("/login")
+                }
+            })
+            .catch((err) => {
+                setError(err.response.data.email)
+                serErrorPassword(err.response.data.password)
+            })
+    }
     return (
         <div>
             <Header />
@@ -23,22 +48,24 @@ function Signup() {
                                 Gmail
                             </a>
                         </div>
+                        <form onSubmit={submit}>
                         <div className="max-w-xl mx-12">
                         <input
-                            type="text"
+                            type="email"
                             className="block border-none w-full p-3 rounded-2xl mb-11"
                             name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="Email"/>
                         </div>
 
                         <div className="flex items-center justify-end mb-11 max-w-xl mx-12">
                         <input
-                            name="pwd"
                             placeholder="Пароль"
                             className="block border-none w-full p-3 rounded-2xl relative"
                             type={isRevealPwd ? "text" : "password"}
-                            value={pwd}
-                            onChange={e => setPwd(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                             <div className="absolute transform -translate-x-4">
                         <Image
@@ -51,14 +78,15 @@ function Signup() {
                         />
                             </div>
                         </div>
-                        <div className="flex items-center justify-end mb-28 max-w-xl mx-12">
+                            {errorPassword&& errorPassword.map((item,index) => <p className="flex-col ">{errorPassword[index]}</p>)}
+                        <div className="flex items-center justify-end mb-10 max-w-xl mx-12">
                         <input
                             name="pwd"
                             placeholder="Потвердить пароль"
                             className="block border-none w-full p-3 rounded-2xl rounded"
                             type={isRevealPwd ? "text" : "password"}
-                            value={confirmPwd}
-                            onChange={e => confirmSetPwd(e.target.value)}
+                            value={confirmPassword}
+                            onChange={(e) => confirmSetPassword(e.target.value)}
                         />
                             <div className="absolute transform -translate-x-4">
                         <Image
@@ -71,11 +99,14 @@ function Signup() {
                         />
                         </div>
                         </div>
+
+                            {error&&<p className="text-center font-semibold text-primary mb-12">{error}</p>}
                         <button
                             type="submit"
                             className="w-3/6 mx-44 rounded-3xl text-center py-3 rounded bg-primary text-white content-center"
                         >Зарегистрироваться
                         </button>
+                        </form>
 
                         <Link href="/login"><div className="text-grey-dark mt-6 text-center">
                             Есть аккаунт? &nbsp;
