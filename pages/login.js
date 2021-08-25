@@ -30,7 +30,6 @@ function LogIn(props) {
     }
     return (
         <div>
-            <Header />
             <div className="flex flex-col ">
                 <div className="container mt-28 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center ">
                     <div className="bg-purple px-6 py-8 rounded shadow-md text-black w-full px-32">

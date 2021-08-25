@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import Header from "../components/Header";
 import Image from "next/image";
 import showPwdImg from "../public/images/showpassword.svg";
 import hidePwdImg from "../public/images/showpassword.svg";
 import API from "../pages/api/index"
 import { useRouter } from 'next/router'
+import withAuth from "../HOC/withAuth"
+import {Head} from "next/document";
 
 
 function Signup() {
@@ -25,7 +26,6 @@ function Signup() {
         }
         API.createUser(user)
             .then((res) => {
-                console.log(res)
                 if(res.status === 201){
                     router.push("/login")
                 }
@@ -37,7 +37,6 @@ function Signup() {
     }
     return (
         <div>
-            <Header />
             <div className="flex flex-col ">
                 <div className="container mt-28 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center ">
                     <div className="bg-purple px-6 py-8 rounded shadow-md text-black w-full px-32">
@@ -123,4 +122,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default withAuth(Signup);
