@@ -8,6 +8,7 @@ import API from "./api";
 import { useRouter } from 'next/router'
 import withAuth from "../HOC/withAuth"
 import withAuthPublic from "../HOC/withAuthPublic";
+import jwt_decode from "jwt-decode"
 
 
 function LogIn(props) {
@@ -24,7 +25,8 @@ function LogIn(props) {
         }
         API.createJWT(user)
             .then((res) => {
-                props.setIsAuth(res.data)
+                const decode = jwt_decode(res.data?.access)
+                props.setIsAuth({...res.data, ...decode})
                 router.push("/dashboard")
             })
             .catch((err) => {

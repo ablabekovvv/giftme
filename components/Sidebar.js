@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Sidebar() {
     return (
-        <aside className="w-80 container p-6 bg-purpleWhite sidebar h-screen inset-y-0 left-0 py-5">
+        <aside className="p-6 bg-purpleWhite sidebar h-screen relative top-26 left-0 py-5 w-3/12">
             <nav className="space-y-8 text-sm mt-16">
                 <div className="space-y-2">
                     <div className="flex flex-col space-y-1">

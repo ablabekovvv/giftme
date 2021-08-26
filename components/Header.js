@@ -11,15 +11,15 @@ function Header(props) {
             <div className="container mx-auto py-5 flex justify-between items-center">
 
                 <Link href="/">
-                    <div className="cursor-pointer">
-                        <Image src={Logo} width={116} height={29} layout={"fixed"}/>
+                    <div className="cursor-pointer ml-10">
+                        <Image src={Logo} width={116} height={29} layout="fixed" />
                     </div>
                 </Link>
                 {/*Right*/}
 
                 <nav className='text-white'>
                     <ul className="flex items-center">
-                        <li className="cursor-pointer mr-10 font-normal text-lg">О нас</li>
+                        <Link href="/"><li className="cursor-pointer mr-10 font-normal text-lg">О нас</li></Link>
                         {
                             !props.isAuth ?
                                 <>
