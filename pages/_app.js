@@ -14,10 +14,10 @@ function MyApp({ Component, pageProps }) {
     localStorage.setItem("user", JSON.stringify(isAuth))
   }, [isAuth])
   return(
-      <>
+      <body className="font-monsterrat">
         <Header isAuth={isAuth} setIsAuth={setIsAuth} />
       <Component {...pageProps } isAuth={isAuth} setIsAuth={setIsAuth} />
-        </>
+        </body>
   )
 }
 

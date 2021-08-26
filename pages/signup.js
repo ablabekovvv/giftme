@@ -6,6 +6,7 @@ import hidePwdImg from "../public/images/showpassword.svg";
 import API from "../pages/api/index"
 import { useRouter } from 'next/router'
 import withAuth from "../HOC/withAuth"
+import withAuthPublic from "../HOC/withAuthPublic";
 import {Head} from "next/document";
 
 
@@ -122,4 +123,5 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default withAuthPublic(Signup);
+

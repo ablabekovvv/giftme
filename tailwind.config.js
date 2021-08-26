@@ -8,8 +8,14 @@ module.exports = {
       primary: '#1DB3C3',
       purple: '#EAE8FF',
       red: '#FA0707',
+      yellow: '#F2C94C',
+      purpleWhite: '#EAE8FF'
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        "monsterrat": "'Montserrat', sans-serif"
+      }
+    },
   },
   variants: {
     extend: {},

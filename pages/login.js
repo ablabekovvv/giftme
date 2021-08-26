@@ -6,6 +6,8 @@ import showPwdImg from '../public/images/showpassword.svg';
 import hidePwdImg from '../public/images/showpassword.svg';
 import API from "./api";
 import { useRouter } from 'next/router'
+import withAuth from "../HOC/withAuth"
+import withAuthPublic from "../HOC/withAuthPublic";
 
 
 function LogIn(props) {
@@ -23,6 +25,7 @@ function LogIn(props) {
         API.createJWT(user)
             .then((res) => {
                 props.setIsAuth(res.data)
+                router.push("/dashboard")
             })
             .catch((err) => {
                 setError(err.response.data.detail)
@@ -101,4 +104,4 @@ function LogIn(props) {
     );
 }
 
-export default LogIn;
+export default withAuthPublic(LogIn);
