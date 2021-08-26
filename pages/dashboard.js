@@ -1,10 +1,15 @@
 import withAuth from "../HOC/withAuth";
+import Sidebar from "../components/Sidebar";
+import Profile from "../components/Profile";
 
 function Dashboard() {
 
     return (
-        <div>
-            1234
+        <div className="flex">
+        <Sidebar />
+        <div className="mx-auto">
+            <Profile />
+        </div>
         </div>
     );
 }
