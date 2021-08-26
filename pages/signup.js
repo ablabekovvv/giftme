@@ -122,4 +122,4 @@ function Signup() {
     );
 }
 
-export default withAuth(Signup);
+export default Signup;
