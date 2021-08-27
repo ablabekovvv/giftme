@@ -19,7 +19,7 @@ function Profile() {
             })
     }, [])
     return (
-        <div className="flex">
+        <div className="flex container">
             <Sidebar />
         <div className="w-full">
             <div className="text-center mt-8">

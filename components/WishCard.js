@@ -3,7 +3,6 @@ import Image from "next/image";
 import Card from "../public/images/card.svg";
 import Star from "../public/images/star.svg";
 import Write from "../public/images/write.svg";
-
 function WishCard() {
     return (
         <div className="flex w-full shadow mt-10 pl-12 py-4 items-center">
@@ -23,5 +22,4 @@ function WishCard() {
         </div>
     );
 }
-
 export default WishCard;

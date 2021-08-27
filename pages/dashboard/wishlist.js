@@ -3,7 +3,6 @@ import Sidebar from "../../components/sidebar";
 import Image from "next/image";
 import WishCard from "../../components/WishCard";
 import withAuth from "../../HOC/withAuth";
-
 function Wishlist() {
     return (
         <div className="flex container">
@@ -21,5 +20,4 @@ function Wishlist() {
         </div>
     );
 }
-
 export default withAuth(Wishlist);
