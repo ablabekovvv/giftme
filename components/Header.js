@@ -32,7 +32,7 @@ function Header(props) {
                                 </> :
                                 <>
                                 <li className="cursor-pointer mr-10 font-light text-lg">Друзья</li>
-                                    <li className="cursor-pointer mr-10 font-light text-lg">Мой личный кабинет</li>
+                                    <Link href="/dashboard/profile"><li className="cursor-pointer mr-10 font-light text-lg">Мой личный кабинет</li></Link>
                                     <div className="mr-10 mt-2 cursor-pointer">
                                     <Image src={Notification} width={27} height={27} layout="fixed" />
                                     </div>

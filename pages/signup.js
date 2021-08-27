@@ -39,7 +39,7 @@ function Signup() {
     return (
         <div>
             <div className="flex flex-col ">
-                <div className="container mt-28 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center ">
+                <div className="mt-28 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center ">
                     <div className="bg-purple px-6 py-8 rounded shadow-md text-black w-full px-32">
                         <h1 className="mb-2 mt-32 text-3xl text-center font-semibold">Регистрация</h1>
                         <div className="mx-auto text-center mb-16 ">
@@ -103,7 +103,7 @@ function Signup() {
                             {error&&<p className="text-center font-semibold text-red mb-12">{error}</p>}
                         <button
                             type="submit"
-                            className="w-3/6 mx-44 rounded-3xl text-center py-3 rounded bg-primary text-white content-center"
+                            className="w-3/6 mx-48 rounded-3xl py-3 rounded bg-primary text-white content-center transorm -translate-x-12"
                         >Зарегистрироваться
                         </button>
                         </form>

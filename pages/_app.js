@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }) {
     setIsAuth(data);
   }, [])
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(isAuth))
+    if(isAuth !== null) {
+      localStorage.setItem("user", JSON.stringify(isAuth))
+    }
   }, [isAuth])
   return(
       <body className="font-monsterrat">

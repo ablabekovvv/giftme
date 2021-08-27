@@ -9,7 +9,8 @@ module.exports = {
       purple: '#EAE8FF',
       red: '#FA0707',
       yellow: '#F2C94C',
-      purpleWhite: '#EAE8FF'
+      purpleWhite: '#EAE8FF',
+      purpleDark: '#877CFF',
     },
     extend: {
       fontFamily: {
