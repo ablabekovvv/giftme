@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Sidebar from "../../components/sidebar";
-import API from "../api/index"
+import API from "../api/index";
+import withAuth from "../../HOC/withAuth";
 
 function Changeprofile() {
     const [email, setEmail] = useState("");
@@ -26,4 +27,4 @@ function Changeprofile() {
     );
 }
 
-export default Changeprofile;
+export default withAuth(Changeprofile);

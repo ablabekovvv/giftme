@@ -12,6 +12,7 @@ module.exports = {
       purpleWhite: '#EAE8FF',
       purpleDark: '#877CFF',
       black : '#000000',
+      btnPurple: '#D4C2FC',
     },
     extend: {
       fontFamily: {

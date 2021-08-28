@@ -1,6 +1,5 @@
 import Sidebar from "../../components/sidebar";
 import withAuth from "../../HOC/withAuth";
-import WishCard from "../../components/WishCard";
 import BasketCard from "../../components/BasketCard";
 
 function Basket() {

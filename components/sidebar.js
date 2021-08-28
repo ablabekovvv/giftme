@@ -12,12 +12,12 @@ function Sidebar() {
                             <p>Личный кабинет</p>
                             </div>
                         </Link>
-                        <Link href="/dashboard/basket">
+                        <Link href="/dashboard/friends">
                             <div className="cursor-pointer">
                                 <p>Мои друзья</p>
                             </div>
                         </Link>
-                        <Link href="/dashboard/basket">
+                        <Link href="/dashboard/holidays">
                             <div className="cursor-pointer">
                                 <p>Мои праздники</p>
                             </div>
