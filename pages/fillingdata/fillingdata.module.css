@@ -1,0 +1,89 @@
+.filling{
+    padding: 74px 0;
+    max-width: 600px;
+    width: 100%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.label{
+    /*width: 100%;*/
+    position: relative;
+}
+.input{
+    width: 100%;
+    padding: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #F0F0F0;
+    outline: none;
+}
+.label > img{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 20px;
+    top: 44px;
+
+}
+.date{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+}
+.date > div{
+    display: flex;
+    gap: 30px;
+
+}
+.date >img{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 20px;
+    top: 30px;
+}
+.textarea{
+    outline: none;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #F0F0F0;
+    padding: 10px;
+    resize: none;
+    overflow: hidden;
+
+}
+
+.textare__desc{
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.69);
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+.out{
+    outline: none;
+    padding: 15px 66px;
+    border: 2px solid #FFCA12;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.choise{
+    margin-top: 147px;
+    justify-content: center;
+    display: flex;
+    gap: 27px;
+}
+.text{
+    font-size: 15px;
+    line-height: 18px;
+    color: #1DB3C3;
+    cursor: pointer;
+}

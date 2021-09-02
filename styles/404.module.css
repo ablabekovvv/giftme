@@ -1,0 +1,42 @@
+.content{
+    display: flex;
+    padding: 114px 0 44px 0 ;
+    align-items: flex-end;
+}
+.left{
+    max-width: 554px;
+    width: 100%;
+}
+.left > h2{
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 117px;
+}
+.left > h3{
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 78px;
+}
+
+.left > p{
+    margin-top: 122px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+}
+.btn{
+    margin-top: 44px;
+    display: inline-block;
+    background: #877CFF;
+    border-radius: 20px;
+    padding: 12px 72px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FEF8F8;
+    cursor: pointer;
+}
+.right > img{
+    max-width: 837px;
+}

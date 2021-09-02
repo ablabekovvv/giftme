@@ -1,0 +1,75 @@
+.main{
+    margin: 40px 0 100px 0;
+}
+
+.container > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text{
+    max-width: 394px;
+    width: 100%;
+}
+.title{
+    font-size: 48px;
+    line-height: 59px;
+    margin-bottom: 28px;
+}
+.desc{
+    font-weight: normal;
+
+}
+.text div{
+    margin-top: 73px;
+    background: #FFCA12;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    max-width: 280px;
+    width: 100%;
+    padding: 15px 60px;
+}
+.image{
+    max-width: 674px;
+    width: 100%;
+}
+.text2{
+    max-width: 290px;
+    width: 100%;
+    text-align: center;
+}
+.whatdo{
+    background: #D4C2FC;
+    padding: 75px 0;
+
+}
+
+.whatdo__block{
+    display: flex;
+    max-width: 840px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.whatod__image > img{
+    width: 130px;
+    height: 133px;
+}
+.card{
+    margin-top: 45px;
+    text-align: center;
+}
+.card > p{
+    margin-top: 45px;
+    color: #FBFBFB;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+}
+.comp{
+    margin-top: 165px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

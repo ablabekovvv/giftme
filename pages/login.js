@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
-import Header from "../components/Header";
 import Image from "next/image";
 import showPwdImg from '../public/images/showpassword.svg';
 import hidePwdImg from '../public/images/showpassword.svg';
 import API from "./api";
 import { useRouter } from 'next/router'
-import withAuth from "../HOC/withAuth"
 import withAuthPublic from "../HOC/withAuthPublic";
 import jwt_decode from "jwt-decode"
+import {useDispatch} from "react-redux";
+import {setToken} from "../store/action";
+
 
 
 function LogIn(props) {
@@ -16,6 +17,7 @@ function LogIn(props) {
     const [isRevealPwd, setIsRevealPwd] = useState(false);
     const [email, setEmail] = useState("");
     const [error, setError] = useState("")
+    const dispatch = useDispatch()
     const router = useRouter()
     const submit = (e) => {
         e.preventDefault();
@@ -25,7 +27,10 @@ function LogIn(props) {
         }
         API.createJWT(user)
             .then((res) => {
-                const decode = jwt_decode(res.data?.access)
+                const decode = jwt_decode(res.data.access)
+                console.log(res.data);
+                console.log(decode);
+                dispatch(setToken({...res.data, ...decode}))
                 props.setIsAuth({...res.data, ...decode})
                 router.push("/dashboard/profile")
             })

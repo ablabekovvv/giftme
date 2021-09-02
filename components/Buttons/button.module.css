@@ -1,0 +1,67 @@
+.save{
+    width: 117px;
+    padding: 14px 9px;
+    font-weight: 500;
+    color: #FBFBFB;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: #1DB3C3;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+.save:active{
+    background: #1E8C98;
+    border: 2px solid #14828D;
+}
+.bidsave{
+    width: 188px;
+    background: #FFCA12;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 16px 48px;
+    border: 2px solid transparent;
+}
+.bidsave:hover{
+    background: #FFCA12;
+    border: 2px solid #AC8911;
+}
+.bidsave:focus{
+    background: #FFD648;
+}
+.bidsave:active{
+    background: #F8DC7C;
+}
+
+.exit{
+    width: 188px;
+    padding: 16px 68px;
+    border: 2px solid #FFCA12;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.change{
+    /*width: 116px;*/
+    padding: 14px 12px;
+    border: 1px solid #1DB3C3;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.change:active{
+    border: 2px solid #18808B;
+}
+.cansel{
+    padding: 14px 12px;
+    border: 1px solid #1DB3C3;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+}
