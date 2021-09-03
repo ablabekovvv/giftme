@@ -34,4 +34,11 @@
     100% { transform: rotate(360deg); }
 }
 
-
+.friends__desc{
+    max-width: 230px;
+    width: 100%;
+}
+.friend_desc{
+    max-height: 70px;
+    overflow: hidden;
+}

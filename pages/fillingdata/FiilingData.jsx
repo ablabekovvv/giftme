@@ -7,10 +7,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import {ChangePass} from "./ChangePass";
 import {DeleteAccont} from "./DeleteAccont";
-// import Link from "next/link";
+
 import API from '../api/index'
 import {Link} from "@material-ui/core";
-import Pen from "../../public/images/pen.svg"
+import Pen from "../../public/images/home.svg"
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -31,6 +31,7 @@ export const FillingData = () => {
     const handleChangeDay = (event) => {
         setDay(event.target.value);
     };
+    const [image, setImage] = React.useState(null)
     const [mounth, setMounth] = React.useState('');
     const handleChangeMounth = (event) => {
         setMounth(event.target.value);
@@ -45,7 +46,9 @@ export const FillingData = () => {
         description: '',
         facebook_link: '',
         instagram_link: '',
+        photo: null,
     })
+
     const changeValue = (e) => {
         setValue((old) => {
             return {
@@ -60,7 +63,15 @@ export const FillingData = () => {
         e.preventDefault();
         setPending(true);
         const id = JSON.parse(localStorage.getItem('user'))?.user_id;
-        API.editUserMe(value,id)
+        const data = new FormData();
+        for(let key in value){
+            if(key === 'photo'){
+                data.append(key, image)
+            } else{
+                data.append(key,value[key])
+            }
+        }
+        API.editUserMe(data,id)
             .then((res) => {
                 setPending(false)
                 console.log(res.data)
@@ -77,6 +88,13 @@ export const FillingData = () => {
     return (
         <div className={`container ${css.filling}`}>
             <form className={css.form} onSubmit={submit}>
+                <label className={css.label}>
+                    <input type="file" value={value.photo} onChange={(e) => {
+                        if(e.target.files !==null && e.target.files.length ){
+                            setImage(e.target.files[0])
+                        }
+                    }} />
+                </label>
                 <label className={css.label}>
                     <p>Имя</p>
                     <input

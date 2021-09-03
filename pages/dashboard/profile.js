@@ -31,7 +31,9 @@ function Profile() {
             <Sidebar />
         <div className="w-full">
             <div className="text-center mt-8">
-                <Image src={Photo} width={196} height={194} />
+                <div className="flex justify-center ">
+                <img src={data?.photo} alt="avatar" className="rounded-full w-56 h-56" />
+                </div>
                 <h2 className="font-semibold text-2xl">{`${data?.last_name || 'Unknown'} ${data?.first_name||'Unknown'}`}</h2>
                 <p>{data?.email}</p>
             </div>

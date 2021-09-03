@@ -1,7 +1,7 @@
 import React from 'react';
 import css from "./mywish.module.css";
 import API from '../api/index'
-import Pen from "../../public/images/pen.svg"
+import Pen from "../../public/images/home.svg"
 import Star from "../../public/images/star.svg"
 
 export const Card = ({onDelete, id, image, name, description, link, wish, setEditWish}) => {
