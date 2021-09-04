@@ -3,12 +3,15 @@ import Sidebar from "../../components/sidebar";
 import API from "../api/index";
 import withAuth from "../../HOC/withAuth";
 import {FillingData} from "../fillingdata/FiilingData";
+import {useRouter} from "next/router";
 
 function Changeprofile() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const router = useRouter()
     const submit = (e) => {
         e.preventDefault();
+
         API.resetEmail({
             new_email: email,
             current_password: password,

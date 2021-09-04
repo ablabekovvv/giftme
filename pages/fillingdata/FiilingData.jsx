@@ -11,6 +11,7 @@ import {DeleteAccont} from "./DeleteAccont";
 import API from '../api/index'
 import {Link} from "@material-ui/core";
 import Pen from "../../public/images/home.svg"
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -31,6 +32,7 @@ export const FillingData = () => {
     const handleChangeDay = (event) => {
         setDay(event.target.value);
     };
+    const router = useRouter()
     const [image, setImage] = React.useState(null)
     const [mounth, setMounth] = React.useState('');
     const handleChangeMounth = (event) => {
@@ -62,6 +64,7 @@ export const FillingData = () => {
     const submit = (e) => {
         e.preventDefault();
         setPending(true);
+        router.push("/dashboard/profile")
         const id = JSON.parse(localStorage.getItem('user'))?.user_id;
         const data = new FormData();
         for(let key in value){
@@ -166,7 +169,7 @@ export const FillingData = () => {
                     <textarea
                         value={value.description} name="description"
                         onChange={changeValue}
-                        id="" cols="30" rows="4" className={css.textarea}>12</textarea>
+                        id="" cols="30" rows="4" className={css.textarea}></textarea>
                     <p className={css.textare__desc}>140 символов</p>
                 </label>
                 <label className={css.label}>

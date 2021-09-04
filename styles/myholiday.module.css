@@ -1,0 +1,97 @@
+.holidays {
+    width: 95%;
+    margin: 0 auto;
+
+}
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 38px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.add {
+    padding: 17px 30px;
+    font-weight: 500;
+    background: #D4C2FC;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+.cards{
+    display: flex;
+    flex-direction: column;
+}
+.column {
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #F5F5F5;
+
+}
+
+
+.dots{
+    width: 30px;
+    height: 30px;
+}
+.left{
+    display: flex;
+    gap: 20px;
+}
+.left > h5{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3C79F0;
+}
+.left{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+.right{
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+}
+.right:hover .choise{
+    opacity: 1;
+    display: flex;
+}
+.choise{
+    display: none;
+    opacity: 0;
+    top: 20px;
+    right: 15px;
+    position: absolute;
+    transition: opacity 5s;
+    flex-direction: column;
+    grid-gap: 5px;
+    background: #EAE8FF;
+
+}
+.choise > div{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;
+    padding: 5px;
+    transition: all .8s;
+
+}
+.delete{
+    color: red;
+}
+.choise > div:hover{
+    background: #877CFF;
+}

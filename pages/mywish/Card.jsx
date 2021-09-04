@@ -4,8 +4,7 @@ import API from '../api/index'
 import Pen from "../../public/images/home.svg"
 import Star from "../../public/images/star.svg"
 
-export const Card = ({onDelete, id, image, name, description, link, wish, setEditWish}) => {
-    const [checked, setChecked] = React.useState(false)
+export const Card = ({onDelete, id, image,name,description,link, wish, setEditWish, setIsGivePresent, userId}) => {
     const deleteWish = () => {
         API.deleteWish(id)
             .then((res) => {
@@ -17,6 +16,7 @@ export const Card = ({onDelete, id, image, name, description, link, wish, setEdi
             })
 
     }
+
     return (
         <div className={css.column}>
             <div className={css.left}>
@@ -24,7 +24,7 @@ export const Card = ({onDelete, id, image, name, description, link, wish, setEdi
                     <img src={image||"/img/card.svg"} alt="card"/>
                 </div>
                 <div className={css.texts}>
-                    <h5>{name||'unknown'}</h5>
+                    <h5>{name||'unknoun'}</h5>
                     <p> {description||'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, iusto!'} </p>
                     <a href={link||'https://www.thingstogetme.com/177412af2132'}
                        target="_blank">{link||'https://www.thingstogetme.com/177412af2132'}</a>
@@ -32,22 +32,22 @@ export const Card = ({onDelete, id, image, name, description, link, wish, setEdi
                 </div>
             </div>
             <div className={css.right}>
-                <div className={css.checked} onClick={() => setChecked(!checked)}>
-                    { checked && <img className={css.star} src={Star} alt="Star"/>}
+                <div className={css.checked} onClick={() =>setIsGivePresent(wish) }>
+                    {<img className={css.star} src="/images/star.svg" alt="Star"/>}
                 </div>
+                {!userId &&
                 <div className={css.dropdown}>
-                    <img className={css.pen} src={Pen} alt="pen"/>
+                    <img className={css.pen} src="/images/pen.svg" alt="pen"/>
 
                     <div className={css.choise}>
                         <div className={css.change} onClick={() => setEditWish(wish)}>Изменить</div>
                         <div className={css.delete} onClick={deleteWish}>Удалить</div>
                     </div>
-                </div>
+                </div>}
 
             </div>
         </div>
 
     );
 };
-
 

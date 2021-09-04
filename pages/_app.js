@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(isAuth))
   }, [isAuth])
+
   return(
       <Provider store={store}>
       <body className="font-monsterrat">

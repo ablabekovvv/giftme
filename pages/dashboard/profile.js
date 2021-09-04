@@ -10,10 +10,24 @@ import {useSelector} from "react-redux";
 
 function Profile() {
     const isAuth = useSelector((state) => state?.auth.token);
-    console.log(isAuth)
     const [data, setData] = React.useState(null);
     const [pending, setPending] = React.useState(true)
-    React.useEffect(()=>{
+    const [friends, setFriends] = useState([]);
+
+    useEffect(() => {
+        const id = JSON.parse(localStorage.getItem("user"))?.user_id
+        API.getUsers(id)
+            .then((res) => {
+                setFriends(res.data)
+                setPending(false)
+            })
+            .catch((error) => {
+                console.log(error.response)
+                setPending(false)
+
+            })
+    }, [])
+    useEffect(()=>{
         const id = JSON.parse(localStorage.getItem("user"))?.user_id
         API.getUser(id)
             .then((res) => {
@@ -45,17 +59,20 @@ function Profile() {
             </Link>
             <div className="flex text-center">
                 <div className="w-full bg-yellow mr-1 p-6 rounded">
-                <h2 className="text-2xl text-white mb-4 font-bold">123</h2>
+                <h2 className="text-2xl text-white mb-4 font-bold">{0 || friends?.length}</h2>
                     <h2 className="font-bold text-white uppercase text-2xl">Друзья</h2>
                 </div>
                 <div className="w-full bg-primary p-6 rounded">
                     <h2 className="text-2xl text-white mb-4 font-bold">123</h2>
-                    <h2 className="font-bold text-white uppercase text-2xl">Друзья</h2>
+                    <h2 className="font-bold text-white uppercase text-2xl">ПОДАРИЛ(-a)</h2>
                 </div>
                 <div className="w-full bg-btnPurple ml-1 p-6 rounded">
-                    <h2 className="text-2xl text-white mb-4 font-bold">123</h2>
-                    <h2 className="font-bold text-white uppercase text-2xl">Друзья</h2>
+                    <h2 className="text-2xl text-white mb-4 font-bold">{data?.wishes.length}</h2>
+                    <h2 className="font-bold text-white uppercase text-2xl">ПОДАРЕНО</h2>
                 </div>
+            </div>
+            <div className="texts mt-6">
+                <p>{data?.description}</p>
             </div>
         </div>
         </div>

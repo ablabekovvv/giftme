@@ -13,14 +13,16 @@ const getToken = () => {
 API.interceptors.request.use((request) => {
     if(getToken()) {
         request.headers = {
-            "Authorization": "Bearer " + getToken()
+            "Authorization": "Bearer " + getToken(null)
         }
     }
     return request;
 })
 
 API.interceptors.response.use((config) => config,
-    (error) => {
+    error => {
+
+
         if(error.response.status === 401) {
             const user = JSON.parse(localStorage.getItem("user"))
             API.post("auth/jwt/refresh/", {refresh: user.refresh})
@@ -38,8 +40,13 @@ API.interceptors.response.use((config) => config,
                         window.location.refresh()
                     }
                 })
+
         }
     })
+
+
+
+
 
 export default {
     createUser: (data) => API.post("auth/users/", data),
@@ -59,4 +66,8 @@ export default {
     createWish: (data) => API.post('wishes/create', data),
     editWish:(id ,data) => API.put('wishes/edit/' +id, data),
     getWish: () => API.get('own-wishes/'),
+    getHolidays: () => API.get('/own-holidays/'),
+    getUserHolidays:() => API.get('holidays/'),
+    deleteHoliday: (id) => API.delete('/holidays/delete/' +id),
+    getUserWishes: () => API.get('wishes/'),
 }

@@ -1,16 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import Sidebar from "../../components/sidebar";
-import Friend from "../../components/Friend";
-import withAuth from "../../HOC/withAuth";
-import API from "../api/index"
+import { useRouter } from 'next/router'
+import Sidebar from "../../../../components/sidebar";
+import Friend from "../../../../components/Friend";
+import React, {useEffect, useState} from "react";
+import API from "../../../api";
+import withAuth from "../../../../HOC/withAuth";
 
-function Friends() {
+const Friends = () => {
+    const router = useRouter()
+    const {user} = router.query
+    const [pending, setPending] = useState(true);
     const [friends, setFriends] = useState([]);
-    const [pending, setPending] = React.useState(true)
 
     useEffect(() => {
         const id = JSON.parse(localStorage.getItem("user"))?.user_id
-        API.getUsers()
+        API.getUsers(user, id)
             .then((res) => {
                 setFriends(res.data)
                 setPending(false)
@@ -18,17 +21,16 @@ function Friends() {
             .catch((error) => {
                 console.log(error.response)
                 setPending(false)
-
             })
     }, [])
-    console.log(friends.length)
 
     if(pending) return <div className=" flex justify-center items-center">
         <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
     </div>
+
     return (
         <div className="flex container">
-            <Sidebar />
+            <Sidebar id={user} />
 
             <div className="w-full max-w-4xl mt-20 mx-auto">
                 <div className="flex justify-center gap-10 items-center">
@@ -43,7 +45,8 @@ function Friends() {
                 </div>
             </div>
         </div>
-    );
+
+    )
 }
 
 export default withAuth(Friends);
