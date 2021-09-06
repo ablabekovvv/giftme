@@ -5,12 +5,15 @@ import Header from "../components/Header";
 import { Provider } from "react-redux";
 import store from "../store/rootReducer";
 import {Footer} from "../components/footer/Footer";
+import axiosRetry from "axios-retry";
+import {API} from "./api";
 
 function MyApp({ Component, pageProps }) {
   const [isAuth, setIsAuth] = useState(null);
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("user"))
     setIsAuth(data);
+
   }, [])
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(isAuth))

@@ -7,26 +7,18 @@ import withAuth from "../../HOC/withAuth";
 import API from "../api";
 import Link from "next/link";
 import {useSelector} from "react-redux";
+import useSWR from 'swr'
+import {useUser} from "../../hooks/hooks";
+
+
 
 function Profile() {
+    const user = useUser(API.getUsers);
+    console.log(user)
     const isAuth = useSelector((state) => state?.auth.token);
     const [data, setData] = React.useState(null);
     const [pending, setPending] = React.useState(true)
     const [friends, setFriends] = useState([]);
-
-    useEffect(() => {
-        const id = JSON.parse(localStorage.getItem("user"))?.user_id
-        API.getUsers(id)
-            .then((res) => {
-                setFriends(res.data)
-                setPending(false)
-            })
-            .catch((error) => {
-                console.log(error.response)
-                setPending(false)
-
-            })
-    }, [])
     useEffect(()=>{
         const id = JSON.parse(localStorage.getItem("user"))?.user_id
         API.getUser(id)
@@ -59,7 +51,7 @@ function Profile() {
             </Link>
             <div className="flex text-center">
                 <div className="w-full bg-yellow mr-1 p-6 rounded">
-                <h2 className="text-2xl text-white mb-4 font-bold">{0 || friends?.length}</h2>
+                <h2 className="text-2xl text-white mb-4 font-bold">{0 || user.data?.data?.length}</h2>
                     <h2 className="font-bold text-white uppercase text-2xl">Друзья</h2>
                 </div>
                 <div className="w-full bg-primary p-6 rounded">

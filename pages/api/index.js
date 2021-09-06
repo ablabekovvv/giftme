@@ -1,28 +1,25 @@
 import axios from "axios";
-
+import axiosRetry from 'axios-retry';
 
 const API = axios.create({
     baseURL: "http://giftme.site/",
 });
 
-const getToken = () => {
-    const token = JSON.parse(localStorage.getItem("user"))?.access;
-    return token;
-}
+
+const getToken = () => JSON.parse(localStorage.getItem("user"))?.access;
 
 API.interceptors.request.use((request) => {
     if(getToken()) {
         request.headers = {
-            "Authorization": "Bearer " + getToken(null)
+            "Authorization": "Bearer " + getToken()
         }
     }
     return request;
 })
+axiosRetry(API, { retries: 3 });
 
 API.interceptors.response.use((config) => config,
     error => {
-
-
         if(error.response.status === 401) {
             const user = JSON.parse(localStorage.getItem("user"))
             API.post("auth/jwt/refresh/", {refresh: user.refresh})
@@ -42,6 +39,7 @@ API.interceptors.response.use((config) => config,
                 })
 
         }
+        return Promise.reject(error.response.data)
     })
 
 
@@ -54,9 +52,6 @@ export default {
     getUser: (id) => API.get("users/" + id),
     resetEmail: (data) => API.post("auth/users/set_email/", data),
     refreshJWT: (data) => API.post("auth/jwt/refresh/", data),
-    getMyWishes: () => API.get("own-wishes/"),
-    getMyBasket: () => API.get("own-bookings/"),
-    getMyHolidays: () => API.get("own-holidays/"),
     createHoliday: (data) => API.post("holidays/create", data),
     editUserMe: (data,id) => API.put('users/edit/'+id , data,),
     createNewPassword:(data) => API.post('auth/users/set_password/',data,),

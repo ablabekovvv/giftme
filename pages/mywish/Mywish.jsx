@@ -3,25 +3,17 @@ import css from './mywish.module.css'
 import {Card} from "./Card";
 import {ModalAddWish} from "./ModalAddWish";
 import API from '../api/index'
+import {useUser} from "../../hooks/hooks";
 
 export const Mywish = () => {
-    const [pending, setPending] = React.useState(true);
     const [wish, setWish] = React.useState([]);
     const [addWish, setAddWish] = React.useState(false);
     const [editWish, setEditWish] = React.useState(null);
+    const {data, isloading} = useUser(API.getWish)
 
-    React.useEffect(() => {
-        API.getWish()
-            .then((res) => {
-                setWish(res.data)
-            })
-            .catch((error) => {
-                console.log(error.response)
-            })
-            .finally(() => setPending(false))
-
-
-    }, [])
+    React.useEffect(()=>{
+        setWish(data?.data)
+    },[data])
     const onDelete = (id) => {
         setWish(() => wish.filter((item) => item.id !==id))
     }
@@ -38,7 +30,7 @@ export const Mywish = () => {
         }  ))
     }
 
-    if (pending) return <div className=" flex justify-center items-center">
+    if (isloading) return <div className=" flex justify-center items-center">
         <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
     </div>
     return (
@@ -49,7 +41,7 @@ export const Mywish = () => {
                     <div className={css.add} onClick={() => setAddWish(true)}> &#43; Добавь подарок</div>
                 </div>
                 <div className={"test"}>
-                    {wish.map((wish) => <Card key={wish.id} {...wish} wish={wish} onDelete={onDelete} setEditWish={setEditWish} />)}
+                    {wish?.map((wish) => <Card key={wish.id} {...wish} wish={wish} onDelete={onDelete} setEditWish={setEditWish} />)}
                 </div>
 
 

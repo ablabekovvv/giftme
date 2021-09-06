@@ -32,7 +32,7 @@ export const Card = ({onDelete, id, image,name,description,link, wish, setEditWi
                 </div>
             </div>
             <div className={css.right}>
-                <div className={css.checked} onClick={() =>setIsGivePresent(wish) }>
+                <div className={css.checked}>
                     {<img className={css.star} src="/images/star.svg" alt="Star"/>}
                 </div>
                 {!userId &&

@@ -2,35 +2,21 @@ import withAuth from "../../HOC/withAuth";
 import React from 'react';
 import css from '../../styles/myholiday.module.css'
 import {ModalHoliday} from "../../components/ModalHoliday/ModalHoliday";
-// import {useSelector} from "react-redux";
 import API from '../api/index';
 import {HolidayCard} from "../../components/HolidayCard";
 import Sidebar from "../../components/sidebar";
+import {useUser} from "../../hooks/hooks";
 
 export const Holidays = ({userId}) => {
     const [openModal, setOpenModal] = React.useState(false)
     const [editHoliday, setEditHoliday] = React.useState(null)
-    // const holidays = useSelector((state) => state.holidays.holidays)
-    const [holidays, setHolidays] = React.useState([]);
-    React.useEffect(() =>{
-        if (userId) {
-            API.getUserHolidays()
-                .then((res) => {
-                    setHolidays(res.data.filter((item) => item.user === Number(userId)))
+    const {data, isLoading} = useUser(API.getHolidays)
+    const [holidays, setHolidays] =React.useState([])
+    React.useEffect(()=>{
+        setHolidays(data?.data)
+    },[data])
 
-                })
-                .catch((error) => {
-                    console.log(error.response)
-                })
-        } else{
-            API.getHolidays()
-                .then((res) => setHolidays(res.data))
-                .catch((error) => {
-                    console.log(error.response)
-                });
 
-        }
-    }, [])
 
 
     const addHoliday = (obj) =>{
@@ -50,6 +36,9 @@ export const Holidays = ({userId}) => {
                 console.log(error.response)
             })
     }
+    if(isLoading) return <div className=" flex justify-center items-center">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+    </div>
 
     return (
         <div className="flex">
@@ -62,10 +51,9 @@ export const Holidays = ({userId}) => {
                     </div>
                     <div className={css.cards}>
                         {
-                            holidays.length?holidays.map((item) =><HolidayCard
+                            holidays?.length?holidays.map((item) =><HolidayCard
                                 deleteHoliday={deleteHoliday}
                                 setEditHoliday={setEditHoliday}
-                                deleteHoliday={deleteHoliday}
                                 key={item.id}
                                 {...item}
                                 item={item}
