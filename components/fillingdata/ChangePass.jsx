@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './fillmodalwin.module.css';
-import API from "../api/index"
+import API from "../../pages/api"
 import Close from "../../public/images/x.svg"
 
 export const ChangePass = ({resetPass, setResetPass}) => {

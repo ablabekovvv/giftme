@@ -2,7 +2,7 @@ import React from 'react';
 import css from './mywish.module.css'
 import {Card} from "./Card";
 import {ModalAddWish} from "./ModalAddWish";
-import API from '../api/index'
+import API from '../../pages/api'
 import {useUser} from "../../hooks/hooks";
 
 export const Mywish = () => {

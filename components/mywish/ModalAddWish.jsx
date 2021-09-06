@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import css from './modaladdwish.module.css'
-import Button from "../../components/Buttons/Buttons";
-import API from '../api/index'
-import Input from "../../components/input/Input";
+import Button from "../Buttons/Buttons";
+import API from '../../pages/api'
+import Input from "../input/Input";
 import Plus from "../../public/images/plus.svg"
 import Close from "../../public/images/x.svg"
 import {useSelector} from "react-redux";

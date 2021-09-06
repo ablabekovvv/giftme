@@ -8,9 +8,9 @@ import FormControl from '@material-ui/core/FormControl';
 import {ChangePass} from "./ChangePass";
 import {DeleteAccont} from "./DeleteAccont";
 
-import API from '../api/index'
+import API from '../../pages/api'
 import {Link} from "@material-ui/core";
-import Pen from "../../public/images/home.svg"
+import Pen from "../../public/images/pen.svg"
 import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme) => ({

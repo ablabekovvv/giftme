@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Logo from "../public/images/logo.svg"
 
 function Sidebar({id}) {
     return (
@@ -9,27 +8,32 @@ function Sidebar({id}) {
                 <div className="space-y-2">
                     <div className="flex flex-col space-y-1 text-purpleDark font-semibold gap-6 text-xl">
                         <Link href="/dashboard/profile">
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer flex items-center">
+                                <img src="/images/home.svg" alt="home" className="mr-4"/>
                             <p>Личный кабинет</p>
                             </div>
                         </Link>
                         <Link href="/dashboard/friends">
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer flex items-center">
+                                <img src="/images/friends.svg" alt="home" className="mr-4"/>
                                 <p>Мои друзья</p>
                             </div>
                         </Link>
                         <Link href="/dashboard/holidays">
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer flex items-center">
+                                <img src="/images/party.svg" alt="home" className="mr-4"/>
                                 <p>Мои праздники</p>
                             </div>
                         </Link>
                         <Link href="/dashboard/wishlist">
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer flex items-center">
+                                <img src="/images/giftsidebar.svg" alt="home" className="mr-4"/>
                                 <p>Мой список желаний</p>
                             </div>
                         </Link>
                         <Link href="/dashboard/basket">
-                            <div className="cursor-pointer">
+                            <div className="cursor-pointer flex items-center">
+                                <img src="/images/basketsidebar.svg" alt="home" className="mr-4"/>
                                 <p>Корзина</p>
                             </div>
                         </Link>
@@ -41,22 +45,26 @@ function Sidebar({id}) {
                     <div className="space-y-2">
                         <div className="flex flex-col space-y-1 text-purpleDark font-semibold gap-6 text-xl">
                             <Link href={`/user/${id}`}>
-                                <div className="cursor-pointer">
+                                <div className="cursor-pointer flex items-center">
+                                    <img src="/images/home.svg" alt="home" className="mr-4"/>
                                     <p>Личный кабинет</p>
                                 </div>
                             </Link>
                             <Link href={`/user/${id}/menu/friends`}>
-                                <div className="cursor-pointer">
+                                <div className="cursor-pointer flex items-center">
+                                    <img src="/images/friends.svg" alt="home" className="mr-4"/>
                                     <p>Друзья</p>
                                 </div>
                             </Link>
                             <Link href={`/user/${id}/menu/holidays`}>
-                                <div className="cursor-pointer">
+                                <div className="cursor-pointer flex items-center">
+                                    <img src="/images/party.svg" alt="home" className="mr-4"/>
                                     <p>Праздники</p>
                                 </div>
                             </Link>
                             <Link href={`/user/${id}/menu/wishes`}>
-                                <div className="cursor-pointer">
+                                <div className="cursor-pointer flex items-center">
+                                    <img src="/images/giftsidebar.svg" alt="home" className="mr-4"/>
                                     <p>Cписок желаний</p>
                                 </div>
                             </Link>

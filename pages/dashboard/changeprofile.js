@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Sidebar from "../../components/sidebar";
 import API from "../api/index";
 import withAuth from "../../HOC/withAuth";
-import {FillingData} from "../fillingdata/FiilingData";
+import {FillingData} from "../../components/fillingdata/FiilingData";
 import {useRouter} from "next/router";
 
 function Changeprofile() {

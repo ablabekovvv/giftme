@@ -1,6 +1,6 @@
 import React from 'react';
 import css from "./mywish.module.css";
-import API from '../api/index'
+import API from '../../pages/api'
 import Pen from "../../public/images/home.svg"
 import Star from "../../public/images/star.svg"
 
@@ -21,7 +21,7 @@ export const Card = ({onDelete, id, image,name,description,link, wish, setEditWi
         <div className={css.column}>
             <div className={css.left}>
                 <div className={css.image}>
-                    <img src={image||"/img/card.svg"} alt="card"/>
+                    <img src={image||"/images/card.svg"} alt="card"/>
                 </div>
                 <div className={css.texts}>
                     <h5>{name||'unknoun'}</h5>

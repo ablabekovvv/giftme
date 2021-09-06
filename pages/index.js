@@ -16,7 +16,7 @@ export default function Home(props) {
                         <p className={css.desc}>Gift.me – это сайт, где пользователи могут размещать свои желаемые
                             подарки, даже указать ссылку на этот подарок.
                             Возможность делиться вещами.</p>
-                        <div><p>Создать WishList</p></div>
+                        <div className="cursor-pointer"><p>Создать WishList</p></div>
                     </div>
                     <div className={css.image}>
                         <img src="images/main-image1.svg" alt="Image-main1"/>

@@ -5,21 +5,17 @@ import {HolidayCard} from "../../../../components/HolidayCard";
 import React from "react";
 import API from "../../../api";
 import withAuth from "../../../../HOC/withAuth";
+import {useUser} from "../../../../hooks/hooks";
 
 const userHolidays = () => {
     const router = useRouter()
     const {user} = router.query;
+    const {data, isLoading} = useUser(API.getUserHolidays)
     const [holidays, setHolidays] = React.useState([]);
     React.useEffect(() =>{
-        API.getUserHolidays()
-                .then((res) => {
-                    setHolidays(res.data.filter((item) => item.user === Number(user)))
+        setHolidays(data?.data?.filter((item) => item.user === Number(user)))
+    })
 
-                })
-                .catch((error) => {
-                    console.log(error.response)
-                })
-    }, [])
     return(
         <div className="flex">
             <Sidebar id={user} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './input.module.css'
-import Pen from "../../public/images/home.svg"
+import Pen from "../../public/images/pen.svg"
 
 const Input = ({label , height=50, action, value, name,  type='text',unpen}) => {
     return (

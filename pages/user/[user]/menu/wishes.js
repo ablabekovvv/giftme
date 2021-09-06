@@ -5,7 +5,7 @@ import {HolidayCard} from "../../../../components/HolidayCard";
 import React from "react";
 import API from "../../../api";
 import withAuth from "../../../../HOC/withAuth";
-import {Card} from "../../../mywish/Card";
+import {Card} from "../../../../components/mywish/Card";
 
 const userHolidays = () => {
     const router = useRouter()
