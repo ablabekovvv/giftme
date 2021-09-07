@@ -4,44 +4,30 @@ import API from "../api/index"
 import Sidebar from "../../components/sidebar";
 import Avatar from "../../public/images/avatar-basket.svg"
 import withAuth from "../../HOC/withAuth";
-import Link from "next/link";
-import Image from "next/image";
-import setting from "../../public/images/setting.svg";
+import {useUser} from "../../hooks/hooks";
 
 function User() {
     const router = useRouter()
-    const {user} = router.query
-    const [pending, setPending] = useState(true);
-    const [data, setData] = useState(null);
-    const [friends, setFriends] = useState([]);
-    useEffect(() => {
-        const id = JSON.parse(localStorage.getItem("user"))?.user_id
-        API.getUser(user, id)
-            .then((res) => {
-                setData(res.data)
-                setPending(false)
-            })
-            .catch((error) => {
-                console.log(error.response)
-                setPending(false)
-            })
-    }, [])
+    const {user} = router.query;
+    // const {data, isLoading} = useUser(API.getUser(user)
+    const [pending, setPending] = React.useState(true)
+    const [data, setData] = React.useState(null);
+    useEffect(()=>{
+        if(user){
+            API.getUser(user)
+                .then((res) => {
+                    setData(res.data)
+                })
+                .catch((error) => {
+                    console.log(error.response)
 
-
-    useEffect(() => {
-        const id = JSON.parse(localStorage.getItem("user"))?.user_id
-        API.getUsers(user, id)
-            .then((res) => {
-                setFriends(res.data)
-                setPending(false)
-            })
-            .catch((error) => {
-                console.log(error.response)
-                setPending(false)
-
-            })
-    }, [])
-    if(pending) return  <h1>...Loading</h1>
+                })
+                .finally(() => setPending(false))
+        }
+    },[user])
+    if(pending) return  <div className=" flex justify-center items-center">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+    </div>
     return (
         <div className="flex container">
             <Sidebar id={user} />
@@ -55,7 +41,7 @@ function User() {
                 </div>
                 <div className="flex text-center">
                     <div className="w-full bg-yellow mr-1 p-6 rounded">
-                        <h2 className="text-2xl text-white mb-4 font-bold">{0 || friends.length}</h2>
+                        <h2 className="text-2xl text-white mb-4 font-bold">{0 || data?.data?.length}</h2>
                         <h2 className="font-bold text-white uppercase text-2xl">Друзья</h2>
                     </div>
                     <div className="w-full bg-primary p-6 rounded">
@@ -68,7 +54,7 @@ function User() {
                     </div>
                 </div>
                 <div className="texts mt-6">
-                    <p>{data?.description}</p>
+                    <p>{data?.data?.description}</p>
                 </div>
             </div>
         </div>

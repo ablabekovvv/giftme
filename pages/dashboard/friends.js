@@ -31,7 +31,6 @@ function Friends() {
                     {
                         data?.data?.filter((item) => item.first_name?.toLowerCase().includes(search.toLowerCase())).map((item) => <Friend key={item.id} id={item.id} photo={item.photo} first_name={item.first_name} last_name={item.last_name} desc={item.description} />)
                     }
-                    <Friend  />
 
                 </div>
             </div>

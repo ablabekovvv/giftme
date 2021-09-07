@@ -14,8 +14,11 @@ const userHolidays = () => {
     const [holidays, setHolidays] = React.useState([]);
     React.useEffect(() =>{
         setHolidays(data?.data?.filter((item) => item.user === Number(user)))
-    })
+    },[data]);
 
+    if(isLoading) return <div className=" flex justify-center items-center">
+        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+    </div>
     return(
         <div className="flex">
             <Sidebar id={user} />
@@ -26,7 +29,7 @@ const userHolidays = () => {
                     </div>
                     <div className={css.cards}>
                         {
-                            holidays.length?holidays.map((item) =><HolidayCard
+                            holidays?.length?holidays?.map((item) =><HolidayCard
                                 key={item.id}
                                 {...item}
                                 item={item}
