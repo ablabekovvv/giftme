@@ -1,5 +1,4 @@
 import axios from "axios";
-import axiosRetry from 'axios-retry';
 
 const API = axios.create({
     baseURL: "http://giftme.site/",
@@ -16,7 +15,6 @@ API.interceptors.request.use((request) => {
     }
     return request;
 })
-axiosRetry(API, { retries: 3 });
 
 API.interceptors.response.use((config) => config,
     error => {
